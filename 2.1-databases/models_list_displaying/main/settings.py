@@ -9,20 +9,17 @@ https://docs.djangoproject.com/en/2.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.1/ref/settings/
 """
-
+import configparser
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'thn+&t-%s0=7!zo_d1ovp*(b%p&$0uoxp&7b$xeukov_i-oe5#'
+SECRET_KEY = '0cir6)b-3&nij^mfa%7&)7e(i(eaiy8at3cgzen3*!3+1)p)0c'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 ALLOWED_HOSTS = []
 
@@ -35,7 +32,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'books',
+    'phones',
 ]
 
 MIDDLEWARE = [
@@ -51,12 +48,16 @@ MIDDLEWARE = [
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+config = configparser.ConfigParser()
+config.read(r"C:\Programming\Saits\python\!Configs\settings_my.ini")
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'netology_models_list',
+        'NAME': 'netology_import_phones',
         'HOST': '127.0.0.1',
         'PORT': '5432',
+        'USER': 'postgres',
+        'PASSWORD': config['Database']['password'],
     }
 }
 
@@ -119,3 +120,5 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
