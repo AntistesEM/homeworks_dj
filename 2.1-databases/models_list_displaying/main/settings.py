@@ -16,10 +16,13 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '0cir6)b-3&nij^mfa%7&)7e(i(eaiy8at3cgzen3*!3+1)p)0c'
+SECRET_KEY = 'thn+&t-%s0=7!zo_d1ovp*(b%p&$0uoxp&7b$xeukov_i-oe5#'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+
+# Quick-start development settings - unsuitable for production
+# See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 ALLOWED_HOSTS = []
 
@@ -32,7 +35,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'phones',
+    'books',
 ]
 
 MIDDLEWARE = [
@@ -47,13 +50,13 @@ MIDDLEWARE = [
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-
 config = configparser.ConfigParser()
 config.read(r"C:\Programming\Saits\python\!Configs\settings_my.ini")
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'netology_import_phones',
+        'NAME': 'netology_models_list',
         'HOST': '127.0.0.1',
         'PORT': '5432',
         'USER': 'postgres',
@@ -120,5 +123,3 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
-
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

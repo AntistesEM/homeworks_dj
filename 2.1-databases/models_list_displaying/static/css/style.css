@@ -1,19 +1,14 @@
 .header {
     margin-top: 30px;
-    margin-bottom: 50px;
+    margin-bottom: 150px;
 }
 
-.phone {
-    margin: 30px;
-    display: inline-block;
-    width: 250px;
+.footer {
+    margin-top: 150px;
+    font-size: 24px;
 }
 
-.sort-block .sort-item {
-    padding-right: 20px;
+.book {
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
-
-.price {
-    font-weight: bold;
-}
-
