@@ -93,7 +93,7 @@ def test_update_course(client, course_factory):
 
 
 @pytest.mark.django_db
-def test_max_students(client, course_factory, student_factory):
+def test_max_students_ok(client, course_factory, student_factory):
     settings.MAX_STUDENTS_PER_COURSE = 1
     courses = course_factory(_quantity=1)
     student = Student.objects.create(name="Evgeny")
@@ -103,6 +103,19 @@ def test_max_students(client, course_factory, student_factory):
     )
 
     assert response.status_code == 200
+
+
+@pytest.mark.django_db
+def test_max_students_error(client, course_factory, student_factory):
+    settings.MAX_STUDENTS_PER_COURSE = 0
+    courses = course_factory(_quantity=1)
+    student = Student.objects.create(name="Evgeny")
+    response = client.patch(
+        f'/api/v1/courses/{courses[0].id}/',
+        data={'students': [student.id]}
+    )
+
+    assert response.status_code == 400
 
 
 @pytest.mark.django_db
