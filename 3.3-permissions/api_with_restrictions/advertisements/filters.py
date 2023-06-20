@@ -13,7 +13,7 @@ class AdvertisementFilter(filters.FilterSet):
 
     class Meta:
         model = Advertisement
-        fields = ['creator', 'created_at', 'favorites']
+        fields = ['creator', 'created_at', 'favorites', 'status']
 
     def filter_by_favorites(self, queryset):
         """
